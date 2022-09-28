@@ -34,9 +34,7 @@ public class GPSActivity extends FragmentActivity implements OnMapReadyCallback 
     private GoogleMap mMap;
     private GpsActivityBinding binding;
     static String theLocation;
-    //private LocationManager locationManager;
-    //private LocationListener locationListener;
-   // private LatLng userLatLng;
+   
 
 
     @Override
@@ -46,7 +44,7 @@ public class GPSActivity extends FragmentActivity implements OnMapReadyCallback 
         binding = GpsActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -75,34 +73,5 @@ public class GPSActivity extends FragmentActivity implements OnMapReadyCallback 
         });
 
     }
-/*
-    private void askpermission() {
-        Dexter.withActivity(this).withPermission(Manifest.permission.ACCESS_FINE_LOCATION).withListener(new PermissionListener() {
-            @Override
-            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                if (ActivityCompat.checkSelfPermission(getBaseContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getBaseContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-                    return;
-                }
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-                Location lastLocation =locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-                userLatLng = new LatLng(lastLocation.getLatitude(), lastLocation.getLongitude());
-                //mMap.clear();
-                mMap.addMarker((new MarkerOptions().position(userLatLng).title("My Location"))).showInfoWindow();
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 16));
-
-            }
-            @Override
-            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-            }
-            @Override
-            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-                permissionToken.continuePermissionRequest();
-
-            }
-        }).check();
-
-    }
-    */
+/
 }
