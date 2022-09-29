@@ -55,15 +55,7 @@ public class Announcement_Adpter extends RecyclerView.Adapter<Announcement_Adpte
         holder.text_Date.setText(announcement.getDate());
         holder.text_Details.setText(announcement.getDetails());
 
-        holder.image_GPS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent =new Intent(Intent.ACTION_VIEW);
-                Toast.makeText(context, announcement.getLocation().toString(), Toast.LENGTH_SHORT).show();
-                intent.setData(Uri.parse("geo:"+announcement.getLocation().toString()+"?z=19"));
-                 context.startActivity(intent);
-            }
-        });
+       
 
         holder.image_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +82,20 @@ public class Announcement_Adpter extends RecyclerView.Adapter<Announcement_Adpte
             image_type =itemView.findViewById(R.id.type_image);
             image_arrow =itemView.findViewById(R.id.arrow_image);
             image_GPS =itemView.findViewById(R.id.GPS_image);
+            
+            mage_GPS.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int i =getAdapterPosition();
+                    announcement =announcementList.get(i);
+                    Intent intent =new Intent(Intent.ACTION_VIEW);
+                    Toast.makeText(context, announcement.getLocation(), Toast.LENGTH_SHORT).show();
+                    intent.setData(Uri.parse("geo:"+announcement.getLocation()+"?z=19"));
+                    context.startActivity(intent);
+
+
+                }
+            });
 
         }
     }
